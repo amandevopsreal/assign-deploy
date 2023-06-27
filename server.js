@@ -1,30 +1,18 @@
 const express = require("express");
-
+const dotenv = require('dotenv');
+dotenv.config();
 const bodyParser = require("body-parser");
-const cors = require("cors");
-const knex = require("knex");
+
 const app = express();
 
 app.use(bodyParser.json());
 
-app.use(cors());
-
-//const db = knex({
-//    client: "pg",
-//    connection: {
-//        host: "dpg-ciddraenqqlb62ml9eqg-a.oregon-postgres.render.com",
-//       user: "aman",
-//       password: "fjOD66oapgReUYis65lO4Mp3Mu7GCqwO",
-//       database: "shop_gp0p"
-//   }
-//});
 
 
-const db = require('knex')({
-    client: 'pg',
-    connection: "postgres://aman:fjOD66oapgReUYis65lO4Mp3Mu7GCqwO@dpg-ciddraenqqlb62ml9eqg-a.oregon-postgres.render.com/shop_gp0p?ssl=true",
-    searchPath: ['knex', 'public'],
-});
+
+
+
+const db = require('./dbConfig');
 
 app.get('/', (req, res) => {
     res.json("this is working")
