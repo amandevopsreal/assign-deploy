@@ -7,11 +7,7 @@ const app = express();
 
 app.use(bodyParser.json());
 
-app.use(cors({
-    origin:["https://assign-deploy-api.vercel.app/"],
-    methods:["POST","GET"],
-    credentials:true
-}));
+app.use(cors());
 
 const db = knex({
     client: "pg",
